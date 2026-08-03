@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+data/financial_phrasebank/
+checkpoints/
+reports/*.png
+*.pt
+*.bin
+*.safetensors
+.DS_Store
+.idea/
+.ipynb_checkpoints/
