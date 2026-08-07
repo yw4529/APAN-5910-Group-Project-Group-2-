@@ -138,5 +138,5 @@ with col_right:
 st.divider()
 st.caption(
     "Model: fine-tuned DistilBERT on Financial PhraseBank · "
-    "Test accuracy 97.3% · F1 macro 0.962"
+    "Test accuracy 94.7% · F1 macro 0.923"
 )
