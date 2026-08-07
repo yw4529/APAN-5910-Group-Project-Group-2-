@@ -7,7 +7,7 @@ import yfinance as yf
 
 TICKERS = ["AAPL", "MSFT", "TSLA", "NVDA"]
 START_DATE = "2023-01-01"
-END_DATE = "2026-08-01"
+END_DATE = "2026-08-07"
 OUT_DIR = "data/prices"
 
 
