@@ -115,6 +115,23 @@ with col_right:
         m1, m2 = st.columns(2)
         m1.metric("Latest Close", f"${latest_price:,.2f}")
         m2.metric("1-Day Change", f"{pct_change:+.2f}%")
+
+        st.write("")
+        st.caption("Recent headlines and predicted sentiment for this ticker")
+        try:
+            scored = pd.read_csv("data/headlines_scored.csv")
+            ticker_headlines = scored[scored["ticker"] == ticker][
+                ["date", "headline", "sentiment_label", "sentiment_score"]
+            ].rename(columns={
+                "date": "Date",
+                "headline": "Headline",
+                "sentiment_label": "Sentiment",
+                "sentiment_score": "Confidence",
+            })
+            ticker_headlines["Confidence"] = ticker_headlines["Confidence"].map(lambda x: f"{x:.1%}")
+            st.dataframe(ticker_headlines, hide_index=True, use_container_width=True)
+        except FileNotFoundError:
+            st.caption("Run `src/evaluate.py` to generate scored headlines.")
     except FileNotFoundError:
         st.info(f"Price data for {ticker} not found. Run `src/fetch_prices.py` first.")
 
