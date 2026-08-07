@@ -45,6 +45,7 @@ class SentimentPredictor:
     @torch.no_grad()
     def predict(self, text: str) -> SentimentResult:
         enc = self.tokenizer(text, truncation=True, max_length=64, return_tensors="pt").to(self.device)
+        enc.pop("token_type_ids", None)
         logits = self.model(**enc).logits[0]
         probs = torch.softmax(logits, dim=-1).cpu().numpy()
 
@@ -59,6 +60,7 @@ class SentimentPredictor:
         """Batched version for scoring many headlines at once (e.g. for the
         return-correlation analysis Person B runs)."""
         enc = self.tokenizer(texts, truncation=True, padding=True, max_length=64, return_tensors="pt").to(self.device)
+        enc.pop("token_type_ids", None)
         logits = self.model(**enc).logits
         probs = torch.softmax(logits, dim=-1).cpu().numpy()
 
