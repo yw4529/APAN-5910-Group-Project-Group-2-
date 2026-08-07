@@ -47,3 +47,5 @@ uv run streamlit run app.py
 ## Notes
 - Environment setup details for Intel Mac compatibility are in `SETUP_NOTES.md`.
 - Tickers analyzed: AAPL, MSFT, TSLA, NVDA.
+
+**Note:** Run `src/fetch_prices.py` before launching the app, or the price chart will show a "not found" message.
