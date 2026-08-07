@@ -47,6 +47,7 @@ def main():
         for i in range(0, len(texts), batch_size):
             batch = texts[i : i + batch_size]
             enc = tokenizer(batch, truncation=True, padding=True, max_length=64, return_tensors="pt").to(device)
+            enc.pop("token_type_ids", None)
             logits = model(**enc).logits
             preds.extend(torch.argmax(logits, dim=-1).cpu().numpy().tolist())
 
