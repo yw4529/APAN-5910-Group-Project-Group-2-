@@ -5,7 +5,7 @@ with analysis of sentiment vs. next-day stock returns and a live Streamlit demo.
 
 ## Team
 - Jialu Huang — modeling, data preparation, fine-tuning, evaluation
-- Yu Wu (Olivia) — price data, correlation analysis, web interface
+- Olivia Wu — price data, correlation analysis, web interface
 
 ## Model performance
 - Test accuracy: 97.3%
